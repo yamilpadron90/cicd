@@ -20,11 +20,11 @@ router.post('/', function (req, res) {
     if (k === config.secret) {
       const n = ecosystem.apps[0].name
       const c = `
-        cd ${config.folder}
-        && git reset --hard
-        && git pull
-        && pm2 delete ${n}
-        && pm2 start
+        cd ${config.folder};
+        git reset --hard;
+        git pull;
+        pm2 delete ${n};
+        pm2 start
       `
       execSync(c.trim())
       console.log('done successfully!')
