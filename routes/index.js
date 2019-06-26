@@ -24,10 +24,15 @@ router.post('/', function (req, res) {
         cd ${config.folder};
         git reset --hard;
         git pull;
-        pm2 delete ${n};
-        pm2 start
       `
       execSync(c.trim())
+      const c1 = `pm2 delete ${n}; pm2 start`
+      try {
+        execSync(c1.trim())
+      } catch {} finally {
+        const c2 = `pm2 start`
+        execSync(c2)
+      }
       console.log('done successfully!')
       res.json('ok')
     }
