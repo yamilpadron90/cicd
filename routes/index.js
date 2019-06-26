@@ -19,6 +19,7 @@ router.post('/', function (req, res) {
     const k = req.body.secret
     if (k === config.secret) {
       const n = ecosystem.apps[0].name
+      console.log('restarting app -> ' + n)
       const c = `
         cd ${config.folder};
         git reset --hard;
