@@ -26,17 +26,18 @@ router.post('/', function (req, res) {
         git pull;
       `
       execSync(c.trim())
-      const c1 = `pm2 delete ${n}; pm2 start`
+      const c1 = `cd ${config.folder}; pm2 delete ${n}; pm2 start`
       try {
         execSync(c1.trim())
       } catch {} finally {
-        const c2 = `pm2 start`
+        const c2 = `cd ${config.folder}; pm2 start`
         execSync(c2)
       }
       console.log('done successfully!')
       res.json('ok')
     }
   } catch (e) {
+    console.warn(e)
     res.json(e)
   } finally {
     console.timeEnd('process')
