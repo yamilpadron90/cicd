@@ -18,7 +18,7 @@ router.post('/', function (req, res) {
     console.time('process')
     const k = req.body.secret
     if (k === config.secret) {
-      const n = ecosystem.apps[0].name
+      const n = config.appName
       console.log('restarting app -> ' + n)
       const c = `
         cd ${config.folder};

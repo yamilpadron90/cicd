@@ -1,5 +1,6 @@
 module.exports = {
     secret: "admin123",
     folder: "./temp",
-    branch: "master"
+    branch: "master",
+    appName: "example"
 }
