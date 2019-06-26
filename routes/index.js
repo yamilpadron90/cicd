@@ -15,25 +15,25 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res) {
   try {
-    console.timeline('process')
+    console.time('process')
     const k = req.body.secret
     if (k === config.secret) {
       const n = ecosystem.apps[0].name
       const c = `
-        cd ${config}
+        cd ${config.folder}
         && git reset --hard
         && git pull
         && pm2 delete ${n}
         && pm2 start
       `
-      execSync(c)
+      execSync(c.trim())
       console.log('done successfully!')
       res.json('ok')
     }
   } catch (e) {
     res.json(e)
   } finally {
-    console.timelineEnd('process')
+    console.timeEnd('process')
   }
 })
 
